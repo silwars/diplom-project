@@ -13,7 +13,7 @@ from sklearn.metrics import adjusted_rand_score, silhouette_score
 from mlxtend.frequent_patterns import fpgrowth
 from mlxtend.frequent_patterns import association_rules
 
-# Укажите путь к папке с файлами
+# путь к папке с файлами
 data_folder = r"C:\Users\Гребенников Матвей\Desktop\Диплом\Курсовая\MachineLearningCSV\MachineLearningCVE"
 
 # Список файлов
@@ -46,11 +46,11 @@ algorithms = {
     'Naive Bayes': GaussianNB(),
 }
 
-# Условно добавляем SVM, если пользователь не выбрал пропуск
+# добавляем SVM, если пользователь не выбрал пропуск
 if not skip_svm:
     algorithms['Support Vector Machine'] = SVC()
 
-# Условно добавляем K-Means, если пользователь не выбрал пропуск
+# добавляем K-Means, если пользователь не выбрал пропуск
 if not skip_kmeans:
     algorithms['K-Means (unsupervised)'] = KMeans(n_clusters=len(y.unique()), random_state=42)
 
@@ -101,10 +101,10 @@ def evaluate_algorithms(X_train, X_test, y_train, y_test, algorithms):
 # Оценка
 results_df = evaluate_algorithms(X_train, X_test, y_train, y_test, algorithms)
 
-# Выводим результаты в консоль
+# Выводим результаты
 print("\nSummary of Results:")
 print(results_df)
 
-# Сохранение результатов в читаемом формате
+# Сохранение результатов
 results_df.to_csv("algorithm_comparison_results_cicids2017.csv", index=False)
 
